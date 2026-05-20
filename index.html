@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Modo oscuro */
+        body.dark { background-color: #1a1a1a; color: #f0f0f0; }
+        body.dark #data-container { background-color: #2a2a2a; }
+        body.dark input, body.dark textarea, body.dark select {
+            background-color: #333; color: #f0f0f0; border-color: #555;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div id="app" class="p-5">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-bold">📝 Task Manager</h1>
+            <div class="flex gap-3 items-center">
+                <span id="contador" class="text-sm text-gray-500">Completadas: 0 / 0</span>
+                <button id="btnDark" class="px-3 py-1 bg-gray-200 hover:bg-gray-400 rounded text-sm">🌙 Modo oscuro</button>
+            </div>
+        </div>
+
+        <!-- Formulario -->
+        <form id="formData" class="grid gap-2 mb-4">
+            <input type="text" name="taskName" id="taskName"
+                class="border border-gray-200 rounded py-1 px-2" placeholder="Nombre de la tarea">
+            <textarea name="description" id="description"
+                class="w-full border border-gray-200 p-3 rounded" rows="3" placeholder="Descripción"></textarea>
+            <button class="px-3 py-1 bg-indigo-200 hover:bg-indigo-400 rounded">➕ Agregar tarea</button>
+        </form>
+
+        <!-- Filtros -->
+        <div class="flex gap-3">
+            <button data-filtro="todas" class="filtro px-3 py-1 bg-gray-200 hover:bg-gray-400 rounded text-sm">Todas</button>
+            <button data-filtro="pendientes" class="filtro px-3 py-1 bg-yellow-200 hover:bg-yellow-400 rounded text-sm">⏳ Pendientes</button>
+            <button data-filtro="completadas" class="filtro px-3 py-1 bg-green-200 hover:bg-green-400 rounded text-sm">✅ Completadas</button>
+        </div>
+    </div>
+
+    <!-- Tarjetas -->
+    <div id="data-container" class="grid grid-cols-4 bg-zinc-100 h-full w-full p-3 gap-4"></div>
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
